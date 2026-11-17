@@ -1,0 +1,20 @@
+name: "ChatModes"
+version: "1.0"
+main: "dev.chatmodes.ChatModes"
+api-version: "26.1"
+description: "Local and global chat"
+commands:
+  chatmode:
+    description: "Toggle local/global chat"
+    usage: "/chatmode"
+    aliases: [cm]
+  g:
+    description: "Global chat"
+    usage: "/g [message]"
+  l:
+    description: "Local chat"
+    usage: "/l [message]"
+permissions:
+  chatmodes.spy:
+    description: "Hear local chat from any distance"
+    default: false

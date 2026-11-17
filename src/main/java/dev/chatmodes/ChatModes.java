@@ -35,8 +35,8 @@ public class ChatModes extends JavaPlugin implements Listener {
         return MM.deserialize(tag)
                 .clickEvent(ClickEvent.runCommand("/chatmode"))
                 .hoverEvent(HoverEvent.showText(MM.deserialize(
-                        "<yellow>Нажми, чтобы переключить режим твоего чата</yellow>\n"
-                                + "<gray>! в начале = один раз в глобальный, ? = один раз в локальный</gray>")));
+                        "<yellow>Click to switch your chat mode</yellow>\n"
+                                + "<gray>! at the start = global once, ? = local once</gray>")));
     }
 
     private boolean isGlobal(Player p) {
@@ -51,11 +51,11 @@ public class ChatModes extends JavaPlugin implements Listener {
 
     private void announce(Player p) {
         boolean g = isGlobal(p);
-        p.sendMessage(MM.deserialize("<gray>Теперь ты пишешь в </gray>")
+        p.sendMessage(MM.deserialize("<gray>You are now writing in </gray>")
                 .append(prefix(g))
                 .append(MM.deserialize(g
-                        ? " <gold>глобальный чат</gold>"
-                        : " <green>локальный чат</green>")));
+                        ? " <gold>global chat</gold>"
+                        : " <green>local chat</green>")));
     }
 
     @Override
@@ -98,7 +98,7 @@ public class ChatModes extends JavaPlugin implements Listener {
 
             long heard = e.viewers().stream().filter(a -> a instanceof Player v && !v.equals(p)).count();
             if (heard == 0) {
-                p.sendActionBar(MM.deserialize("<gray>Рядом никого нет. Напиши <gold>!</gold> в начале, чтобы услышали все</gray>"));
+                p.sendActionBar(MM.deserialize("<gray>Nobody nearby. Start your message with <gold>!</gold> so everyone can hear you</gray>"));
             }
         }
 
@@ -115,7 +115,7 @@ public class ChatModes extends JavaPlugin implements Listener {
     @Override
     public boolean onCommand(CommandSender s, Command c, String label, String[] a) {
         if (!(s instanceof Player p)) {
-            s.sendMessage("Только для игроков.");
+            s.sendMessage("Players only.");
             return true;
         }
         String name = c.getName();
